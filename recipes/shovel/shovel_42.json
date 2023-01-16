@@ -1,0 +1,34 @@
+//bridge-file-version: #21
+{
+	"format_version": "1.16.100",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:shovel_42"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"pattern": [
+			"#",
+			"~",
+			"o"
+		],
+		"key": {
+			"#": {
+				"item": "strat:iron_shovel_head"
+			},
+			"~": {
+				"item": "strat:stone_tool_rod"
+			},
+			"o": {
+				"item": "strat:flint_binding"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:shovel_42",
+				"count": 1
+			}
+		]
+	}
+}

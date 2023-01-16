@@ -1,0 +1,22 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "strat:shovel_head_pattern",
+			"category": "items"
+		},
+		"components": {
+			"minecraft:display_name": {
+				"value": "Shovel Head Pattern"
+			},
+			"minecraft:icon": {
+				"texture": "strat_shovel head pattern"
+			},
+			"minecraft:creative_category": {
+				"parent": "items"
+			}
+		},
+		"events": {}
+	}
+}

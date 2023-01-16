@@ -1,0 +1,28 @@
+//bridge-file-version: #14
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:hatchet_59_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:hatchet_59",
+				"count": 1
+			},
+			{
+				"item": "minecraft:flint",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:hatchet_59",
+				"count": 1
+			}
+		]
+	}
+}

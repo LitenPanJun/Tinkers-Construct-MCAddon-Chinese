@@ -1,0 +1,28 @@
+//bridge-file-version: #25
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:hatchet_24_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:hatchet_24",
+				"count": 1
+			},
+			{
+				"item": "minecraft:cobblestone",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:hatchet_24",
+				"count": 1
+			}
+		]
+	}
+}

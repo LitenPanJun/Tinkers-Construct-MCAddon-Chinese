@@ -1,0 +1,26 @@
+//bridge-file-version: #7
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:casting_basin_rec_4"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"#"
+		],
+		"key": {
+			"#": {
+				"item": "strat:casting_basin_seared_stone"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:casting_basin",
+				"count": 1
+			}
+		]
+	}
+}

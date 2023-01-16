@@ -1,0 +1,15 @@
+//bridge-file-version: #0
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:cobalt_block"
+		},
+		"components": {
+			"minecraft:destroy_time": 2,
+			"minecraft:map_color": "#176ED2",
+			"minecraft:explosion_resistance": 20
+		},
+		"events": {}
+	}
+}

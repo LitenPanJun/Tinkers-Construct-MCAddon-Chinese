@@ -1,0 +1,33 @@
+//bridge-file-version: #9
+{
+	"format_version": "1.16.100",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:mattock_57"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"pattern": [
+			"#o",
+			" ~"
+		],
+		"key": {
+			"#": {
+				"item": "strat:flint_axe_head"
+			},
+			"o": {
+				"item": "strat:stone_shovel_head"
+			},
+			"~": {
+				"item": "strat:flint_tool_rod"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:mattock_57",
+				"count": 1
+			}
+		]
+	}
+}

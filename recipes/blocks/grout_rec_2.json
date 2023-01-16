@@ -1,0 +1,32 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:grout_rec_2"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"ingredients": [
+			{
+				"item": "minecraft:sand",
+				"count": 4
+			},
+			{
+				"item": "minecraft:gravel",
+				"count": 4
+			},
+			{
+				"item": "minecraft:clay",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:grout",
+				"count": 8
+			}
+		]
+	}
+}

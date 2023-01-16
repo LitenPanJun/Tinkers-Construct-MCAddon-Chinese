@@ -1,0 +1,135 @@
+//bridge-file-version: #0
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:casting_table",
+			"properties": {
+				"bridge:block_rotation": [
+					2,
+					3,
+					4,
+					5
+				]
+			}
+		},
+		"components": {
+			"minecraft:on_player_placing": {
+				"event": "bridge:update_rotation"
+			},
+			"minecraft:destroy_time": 1,
+			"minecraft:block_light_absorption": 0,
+			"minecraft:map_color": "#202020",
+			"minecraft:explosion_resistance": 5,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "strat_casting table",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:geometry": "geometry.casting_table",
+			"minecraft:loot": "loot_tables/casting_table.json",
+			"minecraft:on_placed": {
+				"event": "strat:commands"
+			},
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [
+					1,
+					1
+				],
+				"on_tick": {
+					"event": "strat:change_block"
+				}
+			}
+		},
+		"events": {
+			"strat:commands": {
+				"sequence": [
+					{
+						"run_command": {
+							"command": [
+								"gamerule sendcommandfeedback false"
+							]
+						}
+					}
+				]
+			},
+			"bridge:update_rotation": {
+				"set_block_property": {
+					"bridge:block_rotation": "query.cardinal_facing_2d"
+				}
+			},
+			"strat:change_block": {
+				"sequence": [
+					{
+						"condition": "query.block_property('bridge:block_rotation') == 2",
+						"set_block": {
+							"block_type": "strat:casting_table_0"
+						}
+					},
+					{
+						"condition": "query.block_property('bridge:block_rotation') == 3",
+						"set_block": {
+							"block_type": "strat:casting_table_180"
+						}
+					},
+					{
+						"condition": "query.block_property('bridge:block_rotation') == 4",
+						"set_block": {
+							"block_type": "strat:casting_table_90"
+						}
+					},
+					{
+						"condition": "query.block_property('bridge:block_rotation') == 5",
+						"set_block": {
+							"block_type": "strat:casting_table_270"
+						}
+					}
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('bridge:block_rotation') == 2",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('bridge:block_rotation') == 3",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						180,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('bridge:block_rotation') == 4",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('bridge:block_rotation') == 5",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						270,
+						0
+					]
+				}
+			}
+		]
+	}
+}

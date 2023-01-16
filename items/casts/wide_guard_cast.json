@@ -1,0 +1,22 @@
+//bridge-file-version: #3
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "strat:wide_guard_cast",
+			"category": "items"
+		},
+		"components": {
+			"minecraft:display_name": {
+				"value": "Wide Guard Cast"
+			},
+			"minecraft:icon": {
+				"texture": "wide_guard_cast"
+			},
+			"minecraft:creative_category": {
+				"parent": "items"
+			}
+		},
+		"events": {}
+	}
+}

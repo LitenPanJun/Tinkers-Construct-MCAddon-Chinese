@@ -1,0 +1,29 @@
+//bridge-file-version: #10
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:longsword_1_upgrade_4"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:longsword_1",
+				"count": 1
+			},
+			{
+				"item": "strat:stone_hand_guard",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:longsword_2",
+				"count": 1
+			}
+		],
+		"priority": 5
+	}
+}

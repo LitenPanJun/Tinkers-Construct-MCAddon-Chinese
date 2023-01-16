@@ -1,0 +1,32 @@
+//bridge-file-version: #8
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:congealed_green_slime"
+		},
+		"components": {
+			"minecraft:destroy_time": 1,
+			"minecraft:explosion_resistance": 5,
+			"minecraft:map_color": "#6EAA6E",
+			"minecraft:friction": 0.2,
+			"minecraft:on_step_on": {
+				"event": "strat:add_effect"
+			}
+		},
+		"events": {
+			"strat:add_effect": {
+				"sequence": [
+					{
+						"add_mob_effect": {
+							"effect": "jump_boost",
+							"target": "other",
+							"duration": 1,
+							"amplifier": 3
+						}
+					}
+				]
+			}
+		}
+	}
+}

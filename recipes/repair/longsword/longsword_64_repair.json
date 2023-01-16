@@ -1,0 +1,28 @@
+//bridge-file-version: #42
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:longsword_64_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:longsword_64",
+				"count": 1
+			},
+			{
+				"item": "minecraft:flint",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:longsword_64",
+				"count": 1
+			}
+		]
+	}
+}

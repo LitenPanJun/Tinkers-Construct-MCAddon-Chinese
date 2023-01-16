@@ -1,0 +1,33 @@
+//bridge-file-version: #12
+{
+	"format_version": "1.16.100",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:wooden_wide_guard_rec_6"
+		},
+		"tags": [
+			"part_builder"
+		],
+		"pattern": [
+			"#~"
+		],
+		"key": {
+			"#": {
+				"item": "strat:wide_guard_cast"
+			},
+			"~": {
+				"item": "minecraft:log2"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:wooden_wide_guard",
+				"count": 1
+			},
+			{
+				"item": "strat:wide_guard_cast",
+				"count": 1
+			}
+		]
+	}
+}

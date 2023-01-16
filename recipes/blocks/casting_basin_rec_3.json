@@ -1,0 +1,26 @@
+//bridge-file-version: #6
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:casting_basin_rec_3"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"#"
+		],
+		"key": {
+			"#": {
+				"item": "strat:casting_basin_manyullyn"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:casting_basin",
+				"count": 1
+			}
+		]
+	}
+}

@@ -1,0 +1,2299 @@
+//bridge-file-version: #0
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:smeltery_controller_90",
+			"properties": {
+				"strat:state": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15
+				],
+				"strat:state2": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15
+				],
+				"strat:state3": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15
+				],
+				"strat:boils": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9
+				]
+			}
+		},
+		"components": {
+			"minecraft:destroy_time": 1,
+			"minecraft:explosion_resistance": 5,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "strat_smelter",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:geometry": "geometry.smelter",
+			"minecraft:loot": "loot_tables/smeltery_controller.json",
+			"minecraft:on_interact": {
+				"event": "strat:interact"
+			},
+			"minecraft:on_placed": {
+				"event": "strat:commands"
+			},
+			"minecraft:rotation": [
+				0,
+				90,
+				0
+			]
+		},
+		"events": {
+			"strat:interact": {
+				"sequence": [
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'lava_bucket'",
+								"set_block_property": {
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.fill_lava @a ~~~",
+										"give @p bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_ingot'",
+								"set_block_property": {
+									"strat:state": 2,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 3 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_iron_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 3 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_iron_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'gold_ingot'",
+								"set_block_property": {
+									"strat:state": 4,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 5 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_gold_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 5 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_gold_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_ingot'",
+								"set_block_property": {
+									"strat:state": 6,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 7 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_copper_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 7 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_copper_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_ore'",
+								"set_block_property": {
+									"strat:state": 8,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'gold_ore'",
+								"set_block_property": {
+									"strat:state": 9,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_ore'",
+								"set_block_property": {
+									"strat:state": 10,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 11 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state": 3
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_iron_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 12 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state": 5
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_gold_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 13 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state": 7
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_copper_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 3 && query.get_equipped_item_name('main_hand') == 'iron_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 2,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 5 && query.get_equipped_item_name('main_hand') == 'gold_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 3,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 7 && query.get_equipped_item_name('main_hand') == 'copper_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 4,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'raw_iron'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 11,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'raw_gold'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 12,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'raw_copper'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 13,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'blank_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'axe_head_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'pickaxe_head_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'tool_binding_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'tool_rod_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'shovel_head_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'ingot_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'sword_blade_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'wide_guard_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'hand_guard_cast'",
+								"set_block_property": {
+									"strat:state": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'cobalt_ingot'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 1,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'cobalt_ore'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 2,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state2": 0,
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_cobalt_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state2": 0,
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_cobalt_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'cobalt_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 5,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'ardite_ingot'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 4,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'ardite_ore'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 5,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 6 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state2": 0,
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_ardite_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 6 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state2": 0,
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_ardite_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 7 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state2": 3
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_cobalt_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 8 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state2": 6
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_ardite_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 6 && query.get_equipped_item_name('main_hand') == 'ardite_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 6,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'manyullyn_ingot'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 9,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 10 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state2": 0,
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_manyullyn_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 10 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state2": 0,
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_manyullyn_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 6 && query.get_equipped_item_name('main_hand') == 'cobalt_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 11,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'ardite_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 12,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 8 && query.get_equipped_item_name('main_hand') == 'cobalt_ore' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 13,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 7 && query.get_equipped_item_name('main_hand') == 'ardite_ore' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 14,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state3') == 1 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state2": 10,
+									"strat:state3": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_manyullyn_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state2') == 10 && query.get_equipped_item_name('main_hand') == 'manyullyn_ingot' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 7,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								}
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_sword_blade'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_pickaxe_head'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_axe_head'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_shovel_head'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_wide_guard'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_hand_guard'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_binding'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'iron_tool_rod'",
+										"set_block_property": {
+											"strat:state": 2,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_sword_blade'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_pickaxe_head'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_axe_head'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_shovel_head'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_wide_guard'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_hand_guard'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_binding'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'copper_tool_rod'",
+										"set_block_property": {
+											"strat:state": 6,
+											"strat:boils": "query.block_property('strat:boils') +1"
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"playsound liquid.lavapop @a ~~~"
+											]
+										},
+										"play_sound": {
+											"sound": "bucket.fill_lava"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'cobblestone'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 8,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'stone'",
+								"set_block_property": {
+									"strat:state": 15,
+									"strat:state2": 15,
+									"strat:state3": 9,
+									"strat:boils": "query.block_property('strat:boils') +1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound liquid.lavapop @a ~~~"
+									]
+								},
+								"play_sound": {
+									"sound": "bucket.fill_lava"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state3') == 10 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') != 9",
+								"set_block_property": {
+									"strat:state3": 0,
+									"strat:state2": 0,
+									"strat:state": 1
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:seared_stone_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state3') == 10 && query.get_equipped_item_name('main_hand') == 'bucket' && query.block_property('strat:boils') == 9",
+								"set_block_property": {
+									"strat:state3": 0,
+									"strat:state2": 0,
+									"strat:state": 0,
+									"strat:boils": 0
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:seared_stone_bucket"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"strat:transform_iron": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 3,
+							"strat:state2": 0,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_gold": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 5,
+							"strat:state2": 0,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_copper": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 7,
+							"strat:state2": 0,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_cobalt": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state2": 3
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_ardite": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state2": 6
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_manyullyn": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state2": 10
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_seared_stone": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state3": 10
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_iron_2": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 11,
+							"strat:state2": 0,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_gold_2": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 12,
+							"strat:state2": 0,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_copper_2": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 13,
+							"strat:state2": 0,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_cobalt_2": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state2": 7,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_ardite_2": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state2": 8,
+							"strat:state3": 0
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:transform_manyullyn_2": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state2": 15,
+							"strat:state3": 1
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~~~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						},
+						"trigger": {
+							"event": "strat:indicate"
+						}
+					}
+				]
+			},
+			"strat:indicate": {
+				"sequence": [
+					{
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_flame_particle ~-1~~"
+							]
+						}
+					}
+				]
+			},
+			"strat:commands": {
+				"sequence": [
+					{
+						"run_command": {
+							"command": [
+								"gamerule sendcommandfeedback false"
+							]
+						}
+					}
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('strat:state') == 0",
+				"components": {
+					"minecraft:geometry": "geometry.smelter",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 0,
+					"minecraft:on_interact": {
+						"event": "strat:interact",
+						"condition": "query.get_equipped_item_name('main_hand') == 'lava_bucket'"
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 1",
+				"components": {
+					"minecraft:geometry": "geometry.smelter",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 2",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter iron ingot",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_iron"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 3",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter iron 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 4",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter gold ingot",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_gold"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 5",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter gold 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 6",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter copper ingot",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_copper"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 7",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter copper 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 8",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter iron ore",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_iron_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 9",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter gold ore",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_gold_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 10",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter copper ore",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_copper_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 11",
+				"components": {
+					"minecraft:geometry": "geometry.smelter2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter iron 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 12",
+				"components": {
+					"minecraft:geometry": "geometry.smelter2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter gold 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 13",
+				"components": {
+					"minecraft:geometry": "geometry.smelter2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter copper 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 14",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter blank cast",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_gold"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 1",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter cobalt ingot",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_cobalt"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 2",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter cobalt ore",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_cobalt_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 3",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter cobalt 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 4",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter ardite ingot",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_ardite"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 5",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter ardite ore",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_ardite_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 6",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter ardite 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 7",
+				"components": {
+					"minecraft:geometry": "geometry.smelter2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter cobalt 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 8",
+				"components": {
+					"minecraft:geometry": "geometry.smelter2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter ardite 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 9",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter manyullyn ingot",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 10",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_smelter manyullyn 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 11",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_ardite_cobalt_1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 12",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_ardite_cobalt_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 13",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_ardite_cobalt_ore_1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 14",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_ardite_cobalt_ore_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 1",
+				"components": {
+					"minecraft:geometry": "geometry.smelter2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_manyullyn 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 2",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_iron_ingot_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_iron_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 3",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_gold_ingot_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_gold_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 4",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_copper_ingot_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_copper_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 5",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_cobalt_ingot_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_cobalt_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 6",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_ardite_ingot_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_ardite_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 7",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_manyullyn_ingot_2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn_2"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 8",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_cobble_1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_seared_stone"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 9",
+				"components": {
+					"minecraft:geometry": "geometry.smelterblock",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_stone_1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1,
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_seared_stone"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 10",
+				"components": {
+					"minecraft:geometry": "geometry.smelter1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_seared_stone_1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 11",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_raw_iron",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_iron_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 12",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_raw_gold",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_gold_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 13",
+				"components": {
+					"minecraft:geometry": "geometry.smelteringot",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "smelter_raw_copper",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_copper_2"
+						}
+					},
+					"minecraft:block_light_emission": 1
+				}
+			}
+		]
+	}
+}

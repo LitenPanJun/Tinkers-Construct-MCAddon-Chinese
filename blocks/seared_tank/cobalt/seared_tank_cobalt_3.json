@@ -1,0 +1,58 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:seared_tank_cobalt_3"
+		},
+		"components": {
+			"minecraft:destroy_time": 1,
+			"minecraft:map_color": "#202020",
+			"minecraft:geometry": "geometry.tank3",
+			"minecraft:block_light_absorption": 0,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "seared_tank_cobalt",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:explosion_resistance": 5,
+			"minecraft:on_interact": {
+				"event": "strat:interact"
+			},
+			"minecraft:block_light_emission": 1
+		},
+		"events": {
+			"strat:interact": {
+				"sequence": [
+					{
+						"condition": "query.get_equipped_item_name('main_hand') == 'molten_cobalt_bucket'",
+						"decrement_stack": {},
+						"run_command": {
+							"command": [
+								"playsound bucket.fill_lava @p",
+								"give @p bucket"
+							]
+						},
+						"set_block": {
+							"block_type": "strat:seared_tank_cobalt_4"
+						}
+					},
+					{
+						"condition": "query.get_equipped_item_name('main_hand') == 'bucket'",
+						"decrement_stack": {},
+						"run_command": {
+							"command": [
+								"playsound bucket.empty_lava @p",
+								"give @p strat:molten_cobalt_bucket"
+							]
+						},
+						"set_block": {
+							"block_type": "strat:seared_tank_cobalt_2"
+						}
+					}
+				]
+			}
+		}
+	}
+}

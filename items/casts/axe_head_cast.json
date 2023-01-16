@@ -1,0 +1,22 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "strat:axe_head_cast",
+			"category": "items"
+		},
+		"components": {
+			"minecraft:display_name": {
+				"value": "Axe Head Cast"
+			},
+			"minecraft:icon": {
+				"texture": "strat_axe head cast"
+			},
+			"minecraft:creative_category": {
+				"parent": "items"
+			}
+		},
+		"events": {}
+	}
+}

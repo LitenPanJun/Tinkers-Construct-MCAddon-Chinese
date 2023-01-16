@@ -1,0 +1,2099 @@
+//bridge-file-version: #3
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:casting_table_270",
+			"properties": {
+				"strat:state": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15
+				],
+				"strat:state2": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15
+				],
+				"strat:state3": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15
+				],
+				"strat:state4": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9
+				]
+			}
+		},
+		"components": {
+			"minecraft:destroy_time": 1,
+			"minecraft:block_light_absorption": 0,
+			"minecraft:map_color": "#202020",
+			"minecraft:explosion_resistance": 5,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "strat_casting table",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:geometry": "geometry.casting_table",
+			"minecraft:on_interact": {
+				"event": "strat:interact"
+			},
+			"minecraft:loot": "loot_tables/casting_table.json",
+			"minecraft:on_placed": {
+				"event": "strat:commands"
+			},
+			"minecraft:rotation": [
+				0,
+				270,
+				0
+			]
+		},
+		"events": {
+			"strat:interact": {
+				"sequence": [
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'iron_ingot'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 2
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 2 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 2 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/iron_ingot.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'ingot_cast'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 3
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket' && query.get_equipped_item_name('main_hand') != 'seared_stone_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/ingot_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state2": 4
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 4",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/iron_ingot.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'gold_ingot'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 7
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 7 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 7 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/gold_ingot.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 8
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 8",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/gold_ingot.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'copper_ingot'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 5
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 5 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 5 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/copper_ingot.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state2": 6
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 6",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/copper_ingot.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'cobalt_ingot'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 9
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 9 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 9 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/cobalt_ingot.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'molten_cobalt_bucket'",
+										"set_block_property": {
+											"strat:state2": 10
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 10",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/cobalt_ingot.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'ardite_ingot'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 11
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 11 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 11 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/ardite_ingot.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'molten_ardite_bucket'",
+										"set_block_property": {
+											"strat:state2": 12
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 12",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/ardite_ingot.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'manyullyn_ingot'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 13
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 13 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 13 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/manyullyn_ingot.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state2": 14
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 14",
+										"set_block_property": {
+											"strat:state2": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/manyullyn_ingot.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'seared_brick'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 15,
+											"strat:state4": 5
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 5 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state2": 3,
+											"strat:state3": 0,
+											"strat:state4": 0
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 5 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0,
+											"strat:state4": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/seared_brick.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 3 && query.get_equipped_item_name('main_hand') == 'seared_stone_bucket'",
+										"set_block_property": {
+											"strat:state2": 15,
+											"strat:state3": 15,
+											"strat:state4": 6
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 6",
+										"set_block_property": {
+											"strat:state2": 3,
+											"strat:state3": 0,
+											"strat:state4": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/seared_brick.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_tool_rod'",
+										"set_block_property": {
+											"strat:state": 10
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 10 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 1
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 10 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_tool_rod.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'tool_rod_cast'",
+										"set_block_property": {
+											"strat:state": 1
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/tool_rod_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state": 2
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 2",
+										"set_block_property": {
+											"strat:state": 1
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/iron_tool_rod.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 1 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 2
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 2",
+										"set_block_property": {
+											"strat:state": 1,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/copper_tool_rod.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_binding'",
+										"set_block_property": {
+											"strat:state": 11
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 11 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 11 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_binding.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'tool_binding_cast'",
+										"set_block_property": {
+											"strat:state": 3
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 3 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/tool_binding_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 3 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state": 4
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 4",
+										"set_block_property": {
+											"strat:state": 3
+										},
+										"spawn_loot": {
+											"table": "loot_tables/iron_binding.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 3 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 3",
+										"set_block_property": {
+											"strat:state": 3,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/copper_binding.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_axe_head'",
+										"set_block_property": {
+											"strat:state": 12
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 12 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 5
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 12 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_axe_head.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'axe_head_cast'",
+										"set_block_property": {
+											"strat:state": 5
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 5 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/axe_head_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 5 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state": 6
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 6",
+										"set_block_property": {
+											"strat:state": 5
+										},
+										"spawn_loot": {
+											"table": "loot_tables/iron_axe_head.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 5 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 4
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 4",
+										"set_block_property": {
+											"strat:state": 5,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/copper_axe_head.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_pickaxe_head'",
+										"set_block_property": {
+											"strat:state": 13
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 13 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 7
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 13 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_pickaxe_head.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'pickaxe_head_cast'",
+										"set_block_property": {
+											"strat:state": 7
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 7 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/pickaxe_head_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 7 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state": 8
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 8",
+										"set_block_property": {
+											"strat:state": 7
+										},
+										"spawn_loot": {
+											"table": "loot_tables/iron_pickaxe_head.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 7 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 5
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 5",
+										"set_block_property": {
+											"strat:state": 7,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/copper_pickaxe_head.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_shovel_head'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 1
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 1 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 14,
+											"strat:state2": 0
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state2') == 1 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_shovel_head.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'shovel_head_cast'",
+										"set_block_property": {
+											"strat:state": 14
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 14 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/shovel_head_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 14 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 1
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 1",
+										"set_block_property": {
+											"strat:state": 14,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/iron_shovel_head.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 14 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 6
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 6",
+										"set_block_property": {
+											"strat:state": 14,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/copper_shovel_head.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+								"set_block_property": {
+									"strat:state": 9
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"particle minecraft:basic_smoke_particle ~~+1~",
+										"give @p bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'blank_cast'",
+								"set_block_property": {
+									"strat:state": 9
+								},
+								"decrement_stack": {}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 9",
+								"set_block_property": {
+									"strat:state": 0
+								},
+								"spawn_loot": {
+									"table": "loot_tables/blank_cast.json"
+								}
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_sword_blade'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 7
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 7 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state3": 8
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 7 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_sword_blade.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'sword_blade_cast'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 8
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 8 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/sword_blade_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 8 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state3": 9
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 9",
+										"set_block_property": {
+											"strat:state3": 8
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/iron_sword_blade.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state3') == 8 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state3": 15,
+											"strat:state4": 2
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 2",
+										"set_block_property": {
+											"strat:state3": 8,
+											"strat:state4": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/copper_sword_blade.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_wide_guard'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 10
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 10 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state3": 11
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 10 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_wide_guard.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wide_guard_cast'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 11
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 11 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wide_guard_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 11 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state3": 12
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 12",
+										"set_block_property": {
+											"strat:state3": 11
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/iron_wide_guard.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state3') == 11 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state3": 15,
+											"strat:state4": 3
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 3",
+										"set_block_property": {
+											"strat:state3": 11,
+											"strat:state4": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/copper_wide_guard.json"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"sequence": [
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'wooden_hand_guard'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 13
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 13 && query.get_equipped_item_name('main_hand') == 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state3": 14
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 13 && query.get_equipped_item_name('main_hand') != 'molten_gold_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/wooden_hand_guard.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'hand_guard_cast'",
+										"set_block_property": {
+											"strat:state": 15,
+											"strat:state2": 15,
+											"strat:state3": 14
+										},
+										"decrement_stack": {}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 14 && query.get_equipped_item_name('main_hand') != 'molten_iron_bucket' && query.get_equipped_item_name('main_hand') != 'molten_copper_bucket' && query.get_equipped_item_name('main_hand') != 'molten_cobalt_bucket' && query.get_equipped_item_name('main_hand') != 'molten_ardite_bucket' && query.get_equipped_item_name('main_hand') != 'molten_manyullyn_bucket'",
+										"set_block_property": {
+											"strat:state": 0,
+											"strat:state2": 0,
+											"strat:state3": 0
+										},
+										"spawn_loot": {
+											"table": "loot_tables/hand_guard_cast.json"
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state3') == 14 && query.get_equipped_item_name('main_hand') == 'molten_iron_bucket'",
+										"set_block_property": {
+											"strat:state3": 15,
+											"strat:state4": 1
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 1",
+										"set_block_property": {
+											"strat:state3": 14,
+											"strat:state4": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/iron_hand_guard.json"
+										}
+									}
+								]
+							},
+							{
+								"sequence": [
+									{
+										"condition": "query.block_property('strat:state3') == 14 && query.get_equipped_item_name('main_hand') == 'molten_copper_bucket'",
+										"set_block_property": {
+											"strat:state3": 15,
+											"strat:state4": 4
+										},
+										"decrement_stack": {},
+										"run_command": {
+											"command": [
+												"particle minecraft:basic_smoke_particle ~~+1~",
+												"give @p bucket"
+											]
+										}
+									},
+									{
+										"condition": "query.block_property('strat:state4') == 4",
+										"set_block_property": {
+											"strat:state3": 14,
+											"strat:state4": 0
+										},
+										"decrement_stack": {},
+										"spawn_loot": {
+											"table": "loot_tables/copper_hand_guard.json"
+										}
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			"strat:commands": {
+				"sequence": [
+					{
+						"run_command": {
+							"command": [
+								"gamerule sendcommandfeedback false"
+							]
+						}
+					}
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('strat:state') == 0",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table",
+					"minecraft:loot": "loot_tables/casting_table.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 1",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_1.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 2",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_2.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 3",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 3",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_3.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 4",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 4",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_4.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 5",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 5",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_5.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 6",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 6",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_6.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 7",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 7",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_7.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 8",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 8",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_8.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 9",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 9",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_9.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 10",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 10",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_10.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 11",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"render_method": "alpha_test",
+							"texture": "strat_casting table 11"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_11.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 12",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 12",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_12.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 13",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 13",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_13.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 14",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 14",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_14.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "strat_casting table 15",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_15.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table 16",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_16.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 3",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table 17",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_17.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 4",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table 18",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_18.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 5",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table 19",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_19.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 6",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table 20",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_20.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 7",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_21",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_21.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 8",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_22",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_22.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 9",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_23",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_23.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 10",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_24",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_24.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 11",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_25",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_25.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 12",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_26",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_26.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 13",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_27",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_27.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 15 && query.block_property('strat:state2') == 14",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_28",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_28.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_29",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_29.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_30",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_30.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 3",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_31",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_31.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 4",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_32",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_32.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 5",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_33",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_33.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 6",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_34",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_34.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 7",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_35",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_35.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 8",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_36",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_36.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 9",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_37",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_37.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 10",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_38",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_38.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 11",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_39",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_39.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 12",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_40",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_40.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 13",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_41",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_41.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state2') == 15 && query.block_property('strat:state3') == 14",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_42",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_42.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 15 && query.block_property('strat:state4') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_43",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_43.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 15 && query.block_property('strat:state4') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_44",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_44.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 15 && query.block_property('strat:state4') == 3",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_45",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_45.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 15 && query.block_property('strat:state4') == 4",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_46",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_46.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 15 && query.block_property('strat:state4') == 5",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_47",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_47.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state3') == 15 && query.block_property('strat:state4') == 6",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_table_48",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:geometry": "geometry.casting_table_cast",
+					"minecraft:loot": "loot_tables/casting_table_48.json"
+				}
+			}
+		]
+	}
+}

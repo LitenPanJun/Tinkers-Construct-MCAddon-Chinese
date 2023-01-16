@@ -1,0 +1,29 @@
+//bridge-file-version: #11
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:broadsword_1_upgrade_6"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:broadsword_1",
+				"count": 1
+			},
+			{
+				"item": "strat:iron_wide_guard",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:broadsword_13",
+				"count": 1
+			}
+		],
+		"priority": 5
+	}
+}

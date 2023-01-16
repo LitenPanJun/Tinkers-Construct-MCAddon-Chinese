@@ -1,0 +1,35 @@
+//bridge-file-version: #17
+{
+	"format_version": "1.16.100",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:longsword_5_rec"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"pattern": [
+			"#",
+			"~",
+			"o"
+		],
+		"key": {
+			"#": {
+				"item": "strat:stone_sword_blade"
+			},
+			"~": {
+				"item": "strat:wooden_hand_guard"
+			},
+			"o": {
+				"item": "strat:wooden_tool_rod"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:longsword_5",
+				"count": 1
+			}
+		],
+		"priority": 1
+	}
+}

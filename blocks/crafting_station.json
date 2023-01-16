@@ -1,0 +1,30 @@
+//bridge-file-version: #25
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:crafting_station"
+		},
+		"components": {
+			"minecraft:geometry": "geometry.craftingstation",
+			"minecraft:crafting_table": {
+				"grid_size": 3,
+				"crafting_tags": [
+					"crafting_station",
+					"crafting_table"
+				],
+				"custom_description": "Crafting Station"
+			},
+			"minecraft:destroy_time": 1,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "bridge_crafting station",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:block_light_absorption": 0,
+			"minecraft:map_color": "#6D2B15"
+		},
+		"events": {}
+	}
+}

@@ -1,0 +1,28 @@
+//bridge-file-version: #5
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:mattock_5_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:mattock_5",
+				"count": 1
+			},
+			{
+				"item": "minecraft:cobblestone",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:mattock_5",
+				"count": 1
+			}
+		]
+	}
+}

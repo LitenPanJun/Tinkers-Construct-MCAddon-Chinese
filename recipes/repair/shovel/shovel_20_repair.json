@@ -1,0 +1,28 @@
+//bridge-file-version: #22
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:shovel_20_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:shovel_20",
+				"count": 1
+			},
+			{
+				"item": "minecraft:planks",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:shovel_20",
+				"count": 1
+			}
+		]
+	}
+}

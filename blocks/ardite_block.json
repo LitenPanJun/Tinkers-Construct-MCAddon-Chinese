@@ -1,0 +1,15 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:ardite_block"
+		},
+		"components": {
+			"minecraft:destroy_time": 2,
+			"minecraft:map_color": "#AF5308",
+			"minecraft:explosion_resistance": 20
+		},
+		"events": {}
+	}
+}

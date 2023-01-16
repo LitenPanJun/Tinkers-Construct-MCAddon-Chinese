@@ -1,0 +1,26 @@
+//bridge-file-version: #7
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:smeltery_controller_4"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"#"
+		],
+		"key": {
+			"#": {
+				"item": "strat:smeltery_controller_180"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:smeltery_controller",
+				"count": 1
+			}
+		]
+	}
+}

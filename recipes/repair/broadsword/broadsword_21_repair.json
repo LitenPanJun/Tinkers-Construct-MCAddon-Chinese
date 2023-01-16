@@ -1,0 +1,28 @@
+//bridge-file-version: #18
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:broadsword_21_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:broadsword_21",
+				"count": 1
+			},
+			{
+				"item": "minecraft:cobblestone",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:broadsword_21",
+				"count": 1
+			}
+		]
+	}
+}

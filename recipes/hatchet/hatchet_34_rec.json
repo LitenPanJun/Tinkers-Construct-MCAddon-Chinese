@@ -1,0 +1,34 @@
+//bridge-file-version: #29
+{
+	"format_version": "1.16.100",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:hatchet_34_rec"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"pattern": [
+			"#",
+			"~",
+			"o"
+		],
+		"key": {
+			"#": {
+				"item": "strat:stone_axe_head"
+			},
+			"~": {
+				"item": "strat:flint_binding"
+			},
+			"o": {
+				"item": "strat:flint_tool_rod"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:hatchet_34",
+				"count": 1
+			}
+		]
+	}
+}

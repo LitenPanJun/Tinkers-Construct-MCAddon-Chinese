@@ -1,0 +1,272 @@
+//bridge-file-version: #1
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:casting_basin_manyullyn",
+			"properties": {
+				"strat:state": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11
+				]
+			}
+		},
+		"components": {
+			"minecraft:destroy_time": 1,
+			"minecraft:block_light_emission": 0,
+			"minecraft:block_light_absorption": 0,
+			"minecraft:map_color": "#202020",
+			"minecraft:explosion_resistance": 5,
+			"minecraft:geometry": "geometry.basin",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "strat_casting basin",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:on_interact": {
+				"event": "strat:interact"
+			},
+			"minecraft:loot": "loot_tables/casting_basin.json",
+			"minecraft:on_placed": {
+				"event": "strat:commands"
+			}
+		},
+		"events": {
+			"strat:interact": {
+				"sequence": [
+					{
+						"sequence": [
+							{
+								"condition": "query.block_property('strat:state') == 9",
+								"spawn_loot": {
+									"table": "loot_tables/manyullyn_block.json"
+								},
+								"set_block": {
+									"block_type": "strat:casting_basin"
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') >= 0 && query.block_property('strat:state') < 8 && query.get_equipped_item_name('main_hand') == 'molten_manyullyn_bucket'",
+								"set_block_property": {
+									"strat:state": "query.block_property('strat:state') + 1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.fill_lava @a ~~~",
+										"give @p bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') > 0 && query.block_property('strat:state') < 8 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"set_block_property": {
+									"strat:state": "query.block_property('strat:state') - 1"
+								},
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_manyullyn_bucket"
+									]
+								}
+							},
+							{
+								"condition": "query.block_property('strat:state') == 0 && query.get_equipped_item_name('main_hand') == 'bucket'",
+								"decrement_stack": {},
+								"run_command": {
+									"command": [
+										"playsound bucket.empty_lava @a ~~~",
+										"give @p strat:molten_manyullyn_bucket"
+									]
+								},
+								"set_block": {
+									"block_type": "strat:casting_basin"
+								}
+							}
+						]
+					}
+				]
+			},
+			"strat:commands": {
+				"sequence": [
+					{
+						"run_command": {
+							"command": [
+								"gamerule sendcommandfeedback false"
+							]
+						}
+					}
+				]
+			},
+			"strat:transform_manyullyn": {
+				"sequence": [
+					{
+						"set_block_property": {
+							"strat:state": 9
+						},
+						"run_command": {
+							"command": [
+								"particle minecraft:basic_smoke_particle ~~+1~",
+								"playsound bucket.fill_lava @a ~~~"
+							]
+						}
+					}
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('strat:state') == 0",
+				"components": {
+					"minecraft:geometry": "geometry.basin2",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 1",
+				"components": {
+					"minecraft:geometry": "geometry.basin3",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 2",
+				"components": {
+					"minecraft:geometry": "geometry.basin4",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 3",
+				"components": {
+					"minecraft:geometry": "geometry.basin5",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 4",
+				"components": {
+					"minecraft:geometry": "geometry.basin6",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 5",
+				"components": {
+					"minecraft:geometry": "geometry.basin7",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 6",
+				"components": {
+					"minecraft:geometry": "geometry.basin8",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 7",
+				"components": {
+					"minecraft:geometry": "geometry.basin9",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json"
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 8",
+				"components": {
+					"minecraft:geometry": "geometry.basin10",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_molten_manyullyn",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin.json",
+					"minecraft:ticking": {
+						"range": [
+							5,
+							5
+						],
+						"on_tick": {
+							"event": "strat:transform_manyullyn"
+						},
+						"looping": false
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('strat:state') == 9",
+				"components": {
+					"minecraft:geometry": "geometry.basin1",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "casting_basin_manyullyn_block",
+							"render_method": "alpha_test"
+						}
+					},
+					"minecraft:loot": "loot_tables/casting_basin_6.json"
+				}
+			}
+		]
+	}
+}

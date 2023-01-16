@@ -1,0 +1,22 @@
+//bridge-file-version: #6
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "strat:blank_pattern",
+			"category": "items"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "bridge_blank pattern"
+			},
+			"minecraft:display_name": {
+				"value": "Blank Pattern"
+			},
+			"minecraft:creative_category": {
+				"parent": "items"
+			}
+		},
+		"events": {}
+	}
+}

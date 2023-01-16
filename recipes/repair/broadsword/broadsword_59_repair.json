@@ -1,0 +1,28 @@
+//bridge-file-version: #33
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:broadsword_59_repair"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:broadsword_59",
+				"count": 1
+			},
+			{
+				"item": "minecraft:flint",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:broadsword_59",
+				"count": 1
+			}
+		]
+	}
+}

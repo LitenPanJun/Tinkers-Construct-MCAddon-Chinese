@@ -1,0 +1,28 @@
+//bridge-file-version: #5
+{
+	"format_version": "1.16.200",
+	"minecraft:block": {
+		"description": {
+			"identifier": "strat:ardite_ore"
+		},
+		"components": {
+			"minecraft:destroy_time": 2,
+			"minecraft:map_color": "#660900",
+			"minecraft:explosion_resistance": 5,
+			"minecraft:loot": "loot_tables/ardite_ore.json",
+			"minecraft:on_player_destroyed": {
+				"event": "gather",
+				"condition": "query.get_equipped_item_name == 'pickaxe_25'"
+			}
+		},
+		"events": {
+			"gather": {
+				"run_command": {
+					"command": [
+						"say you will receive ardite ore"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+//bridge-file-version: #2
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "strat:manyullyn_block"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"###",
+			"###",
+			"###"
+		],
+		"key": {
+			"#": {
+				"item": "strat:manyullyn_ingot"
+			}
+		},
+		"result": [
+			{
+				"item": "strat:manyullyn_block",
+				"count": 1
+			}
+		]
+	}
+}

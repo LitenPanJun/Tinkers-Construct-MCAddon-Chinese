@@ -1,0 +1,29 @@
+//bridge-file-version: #7
+{
+	"format_version": "1.16.200",
+	"minecraft:recipe_shapeless": {
+		"description": {
+			"identifier": "strat:pickaxe_1_upgrade_3"
+		},
+		"tags": [
+			"tool_station"
+		],
+		"ingredients": [
+			{
+				"item": "strat:pickaxe_1",
+				"count": 1
+			},
+			{
+				"item": "strat:iron_pickaxe_head",
+				"count": 1
+			}
+		],
+		"result": [
+			{
+				"item": "strat:pickaxe_35",
+				"count": 1
+			}
+		],
+		"priority": 5
+	}
+}
