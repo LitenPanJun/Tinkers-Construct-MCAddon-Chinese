@@ -1,0 +1,107 @@
+##bridge-file-version: #69
+pack.name=Tinkers' Construct RP
+pack.description=A Java Mod Recreation by Stratospheer!
+##Translated by AImon301,qingfengf,Liten PanJun,RichLi4307
+
+## Workstations 工作站
+tile.strat:crafting_station.name=合成站
+tile.strat:stencil_table.name=模具加工台
+tile.strat:part_builder.name=部件制作台
+tile.strat:tool_station.name=工具组装台
+tile.strat:tool_forge.name=工具装配台 (铁)
+tile.strat:tool_forge_ardite.name=工具装配台 (阿迪特)
+tile.strat:tool_forge_cobalt.name=工具装配台 (钴)
+tile.strat:tool_forge_manyullyn.name=工具装配台 (玛玉灵)
+tile.strat:tool_forge_gold.name=工具装配台 (金)
+tile.strat:tool_forge_copper.name=工具装配台 (铜)
+
+## Smelter 冶炼厂
+tile.strat:grout.name=水泥（我就是渣渣）
+tile.strat:seared_cobblestone.name=焦黑圆石
+tile.strat:seared_stone.name=焦黑石头
+tile.strat:seared_bricks.name=焦黑石砖
+tile.strat:cracked_seared_bricks.name=裂纹焦黑石砖
+tile.strat:fancy_seared_bricks.name=平滑焦黑石砖
+tile.strat:square_seared_bricks.name=錾制焦黑石砖
+tile.strat:triangle_seared_bricks.name=三角纹焦黑石砖
+tile.strat:seared_creeperface.name=焦黑雕琢石砖
+tile.strat:small_seared_bricks.name=细纹焦黑石砖
+tile.strat:seared_tiles.name=焦黑瓷砖
+tile.strat:seared_road.name=焦黑铺路石
+tile.strat:seared_paver.name=焦黑盖板石
+
+tile.strat:casting_table.name=浇铸台
+tile.strat:casting_table_0.name=浇铸台 (0)
+tile.strat:casting_table_90.name=浇铸台 (90)
+tile.strat:casting_table_180.name=浇铸台 (180)
+tile.strat:casting_table_270.name=浇铸台 (270)
+tile.strat:casting_table_simple.name=简易浇铸台（待定）
+
+tile.strat:smeltery_controller.name=冶炼炉控制器
+tile.strat:smeltery_controller_0.name=冶炼炉控制器 (0)
+tile.strat:smeltery_controller_90.name=冶炼炉控制器 (90)
+tile.strat:smeltery_controller_180.name=冶炼炉控制器 (180)
+tile.strat:smeltery_controller_270.name=冶炼炉控制器 (270)
+
+tile.strat:casting_basin.name=铸造盆
+tile.strat:casting_basin_ardite.name=铸造盆
+tile.strat:casting_basin_manyullyn.name=铸造盆
+tile.strat:casting_basin_seared_stone.name=铸造盆
+
+## Ore 矿石
+tile.strat:ardite_ore.name=阿迪特矿
+tile.strat:cobalt_ore.name=钴矿
+
+## Ore Blocks 矿石块
+tile.strat:ardite_block.name=阿迪特块
+tile.strat:cobalt_block.name=钴块
+tile.strat:manyullyn_block.name=玛玉灵块
+
+## Seared Tank 焦黑液罐
+tile.strat:seared_tank.name=焦黑液罐 (0/100)
+tile.strat:seared_tank_lava_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_lava_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_lava_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_lava_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_lava_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_iron_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_iron_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_iron_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_iron_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_iron_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_gold_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_gold_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_gold_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_gold_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_gold_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_copper_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_copper_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_copper_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_copper_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_copper_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_cobalt_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_cobalt_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_cobalt_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_cobalt_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_cobalt_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_ardite_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_ardite_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_ardite_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_ardite_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_ardite_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_manyullyn_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_manyullyn_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_manyullyn_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_manyullyn_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_manyullyn_5.name=焦黑液罐 (100/100)
+tile.strat:seared_tank_seared_stone_1.name=焦黑液罐 (20/100)
+tile.strat:seared_tank_seared_stone_2.name=焦黑液罐 (40/100)
+tile.strat:seared_tank_seared_stone_3.name=焦黑液罐 (60/100)
+tile.strat:seared_tank_seared_stone_4.name=焦黑液罐 (80/100)
+tile.strat:seared_tank_seared_stone_5.name=焦黑液罐 (100/100)
+
+## Misc 其他
+tile.strat:drying_rack.name=晾干架
+
+## Slime 粘液
+tile.strat:congealed_green_slime.name=冻绿史莱姆
